@@ -127,22 +127,21 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
-//Begin 5 card refactor
+/////////////Begin 5 card refactor////////////
 
 //Smithy refactor header
-int smithyEffect(struct gameState *state, int &currentPlayer, int &handPos);
+int smithyEffect(struct gameState *state, int *currentPlayer, int *handPos);
 
-/*
-   //Advenurer refactor header
-   int adventurerEffect(int *drawntreasure, struct gameState *state, int *currentPlayer, int *cardDrawn, int *temphand, int *z);
+//Advenurer refactor header
+int adventurerEffect(int *drawntreasure, struct gameState *state, int *currentPlayer, int *cardDrawn, int *temphand, int *z);
 
-   //villate refactor header
-   int villageEffect(struct gameState *state, int *currentPlayer, int *handPos);
+//villate refactor header
+int villageEffect(struct gameState *state, int *currentPlayer, int *handPos);
 
-   //great hall refactor header
-   int greatHallEffect(struct gameState *state, int *currentPlayer, int *handPos);
+//great hall refactor header
+int greatHallEffect(struct gameState *state, int *currentPlayer, int *handPos);
 
-   //embargo refactor header
-   int embargoEffect(struct gameState *state, int *choice1, int *handPos, int *currentPlayer);
- */
+//embargo refactor header
+int embargoEffect(struct gameState *state, int *choice1, int *handPos, int *currentPlayer);
+
 #endif
