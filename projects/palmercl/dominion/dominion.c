@@ -1307,7 +1307,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 //smithy new definition
 int smithyEffect(struct gameState *state, int *currentPlayer, int *handPos) {
         //+3 Cards
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i <= 3; i++)
         {
                 drawCard(*(currentPlayer), state);
         }
@@ -1326,7 +1326,7 @@ int adventurerEffect(int *drawntreasure, struct gameState *state, int *currentPl
                 }
                 drawCard(*(currentPlayer), state);
                 *(cardDrawn) = state->hand[*(currentPlayer)][state->handCount[*(currentPlayer)]-1];//top card of hand is most recently drawn card.
-                if (*(cardDrawn) == copper || *(cardDrawn) == silver || *(cardDrawn) == gold)
+                if (*(cardDrawn) == copper || *(cardDrawn) == silver)
                         *(drawntreasure) += 1;
                 else{
                         temphand[*(z)]=*(cardDrawn);
@@ -1348,7 +1348,7 @@ int villageEffect(struct gameState *state, int *currentPlayer, int *handPos) {
         drawCard(*currentPlayer, state);
 
         //+2 Actions
-        state->numActions = state->numActions + 2;
+        state->numActions = state->numBuys + 2;
 
         //discard played card from hand
         discardCard(*handPos, *currentPlayer, state, 0);
@@ -1376,7 +1376,7 @@ int embargoEffect(struct gameState *state, int *choice1, int *handPos, int *curr
         //see if selected pile is in play
         if ( state->supplyCount[*choice1] == -1 )
         {
-                return -1;
+                return 0;
         }
 
         //add embargo token to selected supply pile
