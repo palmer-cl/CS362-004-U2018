@@ -670,6 +670,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         case adventurer:
                 //call adventurer function
                 adventurerEffect(&drawntreasure, state, &currentPlayer, &cardDrawn, temphand, &z);
+				return 0;
 
         case council_room:
                 //+4 Cards
@@ -815,12 +816,12 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         case smithy:
                 //call smithy function
                 smithyEffect(state, &currentPlayer, &handPos);
-                break;
+				return 0;
 
         case village:
                 //call village function
                 villageEffect(state, &currentPlayer, &handPos);
-                break;
+				return 0;
 
         case baron:
                 state->numBuys++;//Increase buys by 1!
@@ -876,7 +877,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         case great_hall:
                 //call great_hall function
                 greatHallEffect(state,&currentPlayer, &handPos);
-                break;
+				return 0;
 
         case minion:
                 //+1 action
@@ -1107,7 +1108,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         case embargo:
                 //call embargo function
                 embargoEffect(state,&choice1, &handPos, &currentPlayer);
-                break;
+				return 0;
 
         case outpost:
                 //set outpost flag
@@ -1326,8 +1327,10 @@ int adventurerEffect(int *drawntreasure, struct gameState *state, int *currentPl
                 }
                 drawCard(*(currentPlayer), state);
                 *(cardDrawn) = state->hand[*(currentPlayer)][state->handCount[*(currentPlayer)]-1];//top card of hand is most recently drawn card.
-                if (*(cardDrawn) == copper || *(cardDrawn) == silver)
-                        *(drawntreasure) += 1;
+				if (*(cardDrawn) == copper || *(cardDrawn) == silver)
+					*(drawntreasure) += 1;
+
+
                 else{
                         temphand[*(z)]=*(cardDrawn);
                         state->handCount[*(currentPlayer)]--; //this should just remove the top card (the most recently drawn one).
@@ -1335,7 +1338,9 @@ int adventurerEffect(int *drawntreasure, struct gameState *state, int *currentPl
                 }
         }
         while(*(z)-1>=0) {
-                state->discard[*(currentPlayer)][state->discardCount[*(currentPlayer)]++]= temphand[*(z)-1]; // discard all cards in play that have been drawn
+			printf("value of z: %d", *z);
+
+			state->discard[*(currentPlayer)][state->discardCount[*(currentPlayer)]++]= temphand[*(z)-1]; // discard all cards in play that have been drawn
                 *(z)-=1;
         }
 

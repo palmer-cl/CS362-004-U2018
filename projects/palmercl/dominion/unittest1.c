@@ -6,13 +6,18 @@ Output: Returns an array of card values
 Assert: The correct card numbers are returned
 */
 
-#include "dominion.c"
+#include "dominion.h"
+#include <stddef.h>
+#include <stdio.h>
+
 
 int main() {
-  int * cardArr = null;
+	int * cardArr = NULL;
 
   //Pass card numbers
-  cardArr = kingdomCards(10,20,30,40,50,60,70,80,90,100)
+	cardArr = kingdomCards(10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
+	printf("Starting unit test 1 (kingdomCards):\n");
 
   //Check Edge cases of cardArr
   if (cardArr[0] == 10) {
@@ -20,7 +25,6 @@ int main() {
   }
   else {
     printf("UNIT TEST 1 FAILED.\n");
-    return 0;
   }
 
   if (cardArr[4] == 50) {
@@ -28,7 +32,6 @@ int main() {
   }
   else {
     printf("UNIT TEST 1 FAILED.\n");
-    return 0;
   }
 
   if (cardArr[9] == 100) {
@@ -36,10 +39,9 @@ int main() {
   }
   else {
     printf("UNIT TEST 1 FAILED.\n");
-    return 0;
   }
 
-  printf("ALL TESTS PASSED\n");
+  printf("\n\n");
 
   return 0;
 }

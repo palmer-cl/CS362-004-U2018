@@ -40,7 +40,8 @@ int main (int argc, char** argv) {
     if (whoseTurn(&G) == 0) {
       if (smithyPos != -1) {
         printf("0: smithy played from position %d\n", smithyPos);
-        playCard(smithyPos, -1, -1, -1, &G);
+        
+		(smithyPos, -1, -1, -1, &G);
         printf("smithy played.\n");
         money = 0;
         i=0;

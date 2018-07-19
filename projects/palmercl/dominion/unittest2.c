@@ -6,7 +6,8 @@ Output: Returns game ready to play
 Assert: Assert Game is set up
 */
 
-#include "dominion.c"
+#include "dominion.h"
+#include <stdio.h>
 
 int main() {
 
@@ -14,39 +15,36 @@ int main() {
   int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
            sea_hag, tribute, smithy};
 
-  printf ("Starting game.\n");
-
   initializeGame(2, k, 5, &G);
 
+  printf("Starting unit test 2 (initializeGame):\n");
+
   //Num players are passed in correctly
-  if (state->numPlayers == 2){
+  if (G.numPlayers == 2){
     printf("Correct num players PASSED\n");
   }
   else {
     printf("UNIT TEST 2 FAILED.\n");
-    return 0;
   }
 
   //Loop to make curse card is assigned properly
-  if(state->supplyCount[curse] == 10) {
+  if(G.supplyCount[curse] == 10) {
     printf("Correct curse card assigned PASSED\n");
   }
   else {
     printf("UNIT TEST 2 FAILED.\n");
-    return 0;
   }
 
   //Check player hand size
-  if (state->handCount[i] = 0 && state->discardCount[i] == 0) {
+  if (G.handCount[1] == 0 && G.discardCount[0] == 0) {
     printf("Correct hand and discard number of cards PASSED\n");
   }
   else {
     printf("UNIT TEST 2 FAILED.\n");
-    return 0;
   }
 
 
-  printf("ALL TESTS PASSED\n");
+  printf("\n\n");
 
   return 0;
 }
