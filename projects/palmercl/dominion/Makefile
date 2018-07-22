@@ -51,14 +51,23 @@ interface.o: interface.h interface.c
 unittestresults: unittest1 unittest2 unittest3 unittest4 unittest5 cardtest1 cardtest2 cardtest3 cardtest4
 	echo "Result for running all dominion tests:" &> unittestresults.out
 	./unittest1 >> unittestresults.out
+	gcov unittest1.c >> unittestresults.out
 	./unittest2 >> unittestresults.out
+	gcov unittest2.c >> unittestresults.out
 	./unittest3 >> unittestresults.out
+	gcov unittest3.c >> unittestresults.out
 	./unittest4 >> unittestresults.out
+	gcov unittest4.c >> unittestresults.out
 	./unittest5 >> unittestresults.out
+	gcov unittest5.c >> unittestresults.out
 	./cardtest1 >> unittestresults.out
+	gcov cardtest1.c >> unittestresults.out
 	./cardtest2 >> unittestresults.out
+	gcov cardtest2.c >> unittestresults.out
 	./cardtest3 >> unittestresults.out
+	gcov cardtest3.c >> unittestresults.out
 	./cardtest4 >> unittestresults.out
+	gcov cardtest4.c >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
 
